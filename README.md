@@ -2,7 +2,7 @@
 Official Ruby wrapper for Dwolla's API
 
 ## Version
-2.5.5
+2.6.0
 
 ## Requirements
 - [Ruby](http://www.ruby-lang.org/)
@@ -30,6 +30,10 @@ This repo includes various usage examples, including:
 * Getting a user's balance [balance.rb]
 
 ## Changelog
+
+2.6.0
+
+* BREAKING CHANGE, OAuth get_token function now returns an array with an `access_token`, `refresh_token`, and expiration times in seconds for both. Tokens now expire, in order to continue using a token, one must use the refresh_auth function added to oauth.rb
 
 2.5.5
 
