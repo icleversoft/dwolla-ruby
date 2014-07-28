@@ -26,9 +26,26 @@ end
 # STEP 2:
 #   Exchange the temporary code given
 #   to us in the querystring, for
-#   a never-expiring OAuth access token
+#   a expiring OAuth access token
 get '/oauth_return' do
     code = params['code']
-    token = Dwolla::OAuth.get_token(code, redirect_uri)
-    "Your never-expiring OAuth access token is: <b>#{token}</b>"
+    info = Dwolla::OAuth.get_token(code, redirect_uri)
+    token = info['access_token']
+    refresh_token = info['refresh_token']
+    "Your expiring OAuth access token is: <b>#{token}</b>, and your refresh token is <b>#{refresh_token}</b>"
+end
+
+# STEP 3:
+#
+#   The array returned in step 2 as 'info' also contains
+#   expiration times for when the OAuth token will become
+#   invalid. Use this method to refresh your token with
+#   the provided refresh token.
+#
+get '/oauth_refresh' do
+  refresh_token = params['refresh_token']
+  info = Dwolla::OAuth.refresh_auth(refresh_token, redirect_uri)
+  token = info['access_token']
+  refresh_token = info['refresh_token']
+  "Your expiring OAuth access token is: <b>#{token}</b>, and your refresh token is <b>#{refresh_token}</b>"
 end
