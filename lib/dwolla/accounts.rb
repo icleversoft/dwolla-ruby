@@ -12,6 +12,12 @@ module Dwolla
             Dwolla.request(:post, url, params, {}, token)
         end
 
+        def self.get_autowithdrawal_status(token=nil)
+
+            url = accounts_url + 'features/auto_withdrawal'
+            Dwolla.request(:get, url, {}, {}, token)
+        end
+
         private
 
         def self.accounts_url
