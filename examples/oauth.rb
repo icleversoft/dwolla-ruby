@@ -26,7 +26,7 @@ end
 # STEP 2:
 #   Exchange the temporary code given
 #   to us in the querystring, for
-#   a expiring OAuth access token
+#   an expiring OAuth access token and refresh token pair.
 get '/oauth_return' do
     code = params['code']
     info = Dwolla::OAuth.get_token(code, redirect_uri)
