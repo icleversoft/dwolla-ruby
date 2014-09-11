@@ -33,7 +33,7 @@ This repo includes various usage examples, including:
 
 2.6.0
 
-* **BREAKING CHANGE**: OAuth access tokens now expire. `Dwolla::OAuth::get_token` now returns a hash with an `access_token`, `refresh_token`, and expiration times in seconds for both. In order to refresh authorization, use `Dwolla::OAuth.refresh_auth`
+* **BREAKING CHANGE**: OAuth access tokens now expire. Instead of a string, `Dwolla::OAuth::get_token` now returns a hash with an `access_token`, `refresh_token`, and expiration times in seconds for both. In order to refresh authorization, use `Dwolla::OAuth.refresh_auth`
 
 2.5.5
 
