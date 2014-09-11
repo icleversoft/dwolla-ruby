@@ -38,15 +38,13 @@ module Dwolla
             return resp
         end
 
-        def self.refresh_auth(refresh_token=nil, redirect_uri=nil)
+        def self.refresh_auth(refresh_token=nil)
           raise MissingParameterError.new('No Refresh Token Provided') if refresh_token.nil?
 
           params = {
               :grant_type => 'refresh_token',
               :refresh_token => refresh_token
           }
-
-          params['redirect_uri'] = redirect_uri unless redirect_uri.nil?
 
           resp = Dwolla.request(:get, token_url, params, {}, false, false, true)
 

@@ -44,7 +44,7 @@ end
 #
 get '/oauth_refresh' do
   refresh_token = params['refresh_token']
-  info = Dwolla::OAuth.refresh_auth(refresh_token, redirect_uri)
+  info = Dwolla::OAuth.refresh_auth(refresh_token)
   token = info['access_token']
   refresh_token = info['refresh_token']
   "Your expiring OAuth access token is: <b>#{token}</b>, and your refresh token is <b>#{refresh_token}</b>"
