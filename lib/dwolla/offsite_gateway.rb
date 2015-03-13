@@ -10,6 +10,7 @@ module Dwolla
         @allow_funding_sources = true
         @additional_funding_sources = true
         @order_id = nil
+        @allow_guest_checkout = true
 
         def self.clear_session
             @products = []
@@ -22,6 +23,7 @@ module Dwolla
             @allow_funding_sources = true
             @additional_funding_sources = true
             @order_id = nil
+            @allow_guest_checkout = true
         end
 
         class << self
@@ -35,6 +37,7 @@ module Dwolla
             attr_writer :allow_funding_sources
             attr_writer :additional_funding_sources
             attr_writer :facilitator_amount
+            attr_writer :allow_guest_checkout
         end
 
         def self.add_product(name=nil, description=nil, price=nil, quantity=1)
@@ -67,6 +70,7 @@ module Dwolla
                 :secret => Dwolla::api_secret,
                 :allowFundingSources => @allow_funding_sources,
                 :additionalFundingSources => @additional_funding_sources,
+                :allowGuestCheckout => @allow_guest_checkout,
                 :test => @test_mode,
                 :callback => @callback,
                 :redirect => @redirect,
